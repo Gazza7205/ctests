@@ -39,14 +39,14 @@ for CHART_DIR in ${CHART_DIRS[@]}; do
          echo "Latest version ${KUBERNETES_VERSION_MATRIX[$KUBERNETES_VERSION]}"
          echo "*****************************************************************"   
          echo "-----------------------------------------------------------------"
-         helm template --values ../charts/"${CHART_DIR}"/ci/ci-values.yaml ../charts/"${CHART_DIR}" | ./kubeconform -summary -strict -schema-location ${SCHEMA_LOCATION} -kubernetes-version "${KUBERNETES_VERSION_MATRIX[$KUBERNETES_VERSION]#v}.0" || true
+         helm template --values ./charts/"${CHART_DIR}"/ci/ci-values.yaml ./charts/"${CHART_DIR}" | ./kubeconform -summary -strict -schema-location ${SCHEMA_LOCATION} -kubernetes-version "${KUBERNETES_VERSION_MATRIX[$KUBERNETES_VERSION]#v}.0" || true
          echo "-----------------------------------------------------------------"
          echo "*****************************************************************"
       fi
     fi
     echo "-----------------------------------------------------------------"
     echo "Validating ${CHART_DIR} Chart with Kubernetes ${KUBERNETES_VERSION_MATRIX[$KUBERNETES_VERSION]}"
-    helm template --values ../charts/"${CHART_DIR}"/ci/ci-values.yaml ../charts/"${CHART_DIR}" | ./kubeconform -summary -strict -schema-location ${SCHEMA_LOCATION} -kubernetes-version "${KUBERNETES_VERSION_MATRIX[$KUBERNETES_VERSION]#v}.0"
+    helm template --values ./charts/"${CHART_DIR}"/ci/ci-values.yaml ./charts/"${CHART_DIR}" | ./kubeconform -summary -strict -schema-location ${SCHEMA_LOCATION} -kubernetes-version "${KUBERNETES_VERSION_MATRIX[$KUBERNETES_VERSION]#v}.0"
     echo "-----------------------------------------------------------------"
   done
 done

@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  kubeval-chart:
+  kubeconform-chart:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
