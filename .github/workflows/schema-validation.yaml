@@ -6,7 +6,6 @@ on:
       - stable
       - unstable
 
-
 jobs:
   kubeval-chart:
     runs-on: ubuntu-latest
